@@ -14,7 +14,9 @@ import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
 public class MutualFriendsFinder extends Configured implements Tool {
-
+	public static final String USER_A = "userA";
+	public static final String USER_B = "userB";
+	
 	public static void main(String[] args) throws Exception {
 		int res = ToolRunner.run(new Configuration(), new MutualFriendsFinder(),
 				args);
@@ -29,8 +31,8 @@ public class MutualFriendsFinder extends Configured implements Tool {
 		}
 
 		Configuration conf = new Configuration();
-		conf.set("userA", args[2]);
-		conf.set("userB", args[3]);
+		conf.set(USER_A, args[2]);
+		conf.set(USER_B, args[3]);
 		
 		Job job = new Job(conf, "mutual");
         
